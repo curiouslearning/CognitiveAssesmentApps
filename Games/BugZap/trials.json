@@ -1,0 +1,128 @@
+[
+	{
+    "frogColor": "blue",
+    "frogSide": "right",
+    "rotation": "0deg",
+    "rightBug": "blue",
+    "leftBug": "green"
+	},
+  {
+    "frogColor": "blue",
+    "frogSide": "right",
+    "rotation": "0deg",
+    "rightBug": "blue",
+    "leftBug": "green"
+	},
+  {
+    "frogColor": "blue",
+    "frogSide": "right",
+    "rotation": "0deg",
+    "rightBug": "blue",
+    "leftBug": "green"
+	},
+  {
+    "frogColor": "blue",
+    "frogSide": "left",
+    "rotation": "180deg",
+    "rightBug": "green",
+    "leftBug": "blue"
+	},
+  {
+    "frogColor": "green",
+    "frogSide": "left",
+    "rotation": "180deg",
+    "rightBug": "blue",
+    "leftBug": "green"
+	},
+	{
+    "frogColor": "green",
+    "frogSide": "left",
+    "rotation": "180deg",
+    "rightBug": "blue",
+    "leftBug": "green"
+	},
+  {
+    "frogColor": "green",
+    "frogSide": "right",
+    "rotation": "0deg",
+    "rightBug": "green",
+    "leftBug": "blue"
+	},
+  {
+    "frogColor": "green",
+    "frogSide": "right",
+    "rotation": "0deg",
+    "rightBug": "green",
+    "leftBug": "blue"
+	},
+  {
+    "frogColor": "blue",
+    "frogSide": "left",
+    "rotation": "180deg",
+    "rightBug": "green",
+    "leftBug": "blue"
+	},
+  {
+    "frogColor": "blue",
+    "frogSide": "left",
+    "rotation": "180deg",
+    "rightBug": "green",
+    "leftBug": "blue"
+	},
+  {
+    "frogColor": "green",
+    "frogSide": "right",
+    "rotation": "0deg",
+    "rightBug": "green",
+    "leftBug": "blue"
+	},
+  {
+    "frogColor": "blue",
+    "frogSide": "left",
+    "rotation": "180deg",
+    "rightBug": "green",
+    "leftBug": "blue"
+	},
+  {
+    "frogColor": "green",
+    "frogSide": "right",
+    "rotation": "0deg",
+    "rightBug": "green",
+    "leftBug": "blue"
+	},
+  {
+    "frogColor": "blue",
+    "frogSide": "left",
+    "rotation": "180deg",
+    "rightBug": "green",
+    "leftBug": "blue"
+	},
+  {
+    "frogColor": "blue",
+    "frogSide": "left",
+    "rotation": "180deg",
+    "rightBug": "green",
+    "leftBug": "blue"
+	},
+  {
+    "frogColor": "green",
+    "frogSide": "right",
+    "rotation": "0deg",
+    "rightBug": "green",
+    "leftBug": "blue"
+	},
+  {
+    "frogColor": "green",
+    "frogSide": "right",
+    "rotation": "0deg",
+    "rightBug": "green",
+    "leftBug": "blue"
+	},
+  {
+    "frogColor": "blue",
+    "frogSide": "left",
+    "rotation": "180deg",
+    "rightBug": "green",
+    "leftBug": "blue"
+	}
+]

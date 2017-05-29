@@ -1,0 +1,32 @@
+{
+  "name": "CogPlay",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "install": "^0.10.1",
+    "lodash": "^4.17.4",
+    "npm": "^4.6.1",
+    "random-string": "^0.2.0",
+    "react": "16.0.0-alpha.6",
+    "react-addons-shallow-compare": "^15.5.2",
+    "react-mixin": "^3.0.5",
+    "react-native": "0.44.0",
+    "react-native-deprecated-custom-components": "^0.1.0",
+    "react-native-sound": "^0.10.1",
+    "react-timer-mixin": "^0.13.3",
+    "tcomb-form-native": "^0.6.8"
+  },
+  "devDependencies": {
+    "babel-jest": "20.0.3",
+    "babel-preset-react-native": "1.9.2",
+    "jest": "20.0.4",
+    "react-test-renderer": "16.0.0-alpha.6"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

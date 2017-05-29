@@ -1,0 +1,46 @@
+[
+	{
+    "correctSymbol": "GRASS",
+    "thoughtTiles": {
+      "activeTiles": [true, true, true, false, false, false, false, false, false],
+      "frameKeys": ["CAN", "FRUIT", "GRASS", "", "", "", "", "", ""]
+    },
+    "displaySymbols": {
+      "symbols": ["CAN", "FRUIT", "BUG", "GRASS"]
+    }
+	},
+
+  {
+    "correctSymbol": "FRUIT",
+    "thoughtTiles": {
+      "activeTiles": [true, true, true, false, false, false, false, false, false],
+      "frameKeys": ["BUG", "CAN", "FRUIT", "", "", "", "", "", ""]
+    },
+    "displaySymbols": {
+      "symbols": ["FRUIT", "CAN", "BUG", "GRASS"]
+    }
+	},
+
+  {
+    "correctSymbol": "CAN",
+    "thoughtTiles": {
+      "activeTiles": [true, true, true, false, false, false, false, false, false],
+      "frameKeys": ["GRASS", "BUG", "CAN", "", "", "", "", "", ""]
+    },
+    "displaySymbols": {
+      "symbols": ["BUG", "FRUIT", "CAN", "GRASS"]
+    }
+	},
+
+  {
+    "correctSymbol": "BUG",
+    "thoughtTiles": {
+      "activeTiles": [true, true, true, false, false, false, false, false, false],
+      "frameKeys": ["GRASS", "GRASS", "BUG", "", "", "", "", "", ""]
+    },
+    "displaySymbols": {
+      "symbols": ["FRUIT", "GRASS", "CAN", "BUG"]
+    }
+	}
+
+]

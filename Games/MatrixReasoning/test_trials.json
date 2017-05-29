@@ -1,0 +1,83 @@
+[
+	{
+		"correctSelection": "QC63",
+		"selectionTiles": {
+			"activeTiles": [true, false, false, true, false, false, true, false, false],
+			"frameKeys": ["QC66", "", "", "QC63", "", "", "QC72", "", ""]
+		},
+		"gameboardTiles": {
+			"activeTiles": [true, true, false, true, true, false, false, false, false],
+			"frameKeys": ["QC72", "QC67", "", "QC66", "BLANK","", "","",""]
+		}
+	},
+	{
+		"correctSelection": "QC17",
+		"selectionTiles": {
+			"activeTiles": [true, false, false, true, false, false, true, false, false],
+			"frameKeys": ["QC14", "", "", "QC17", "", "", "QC27", "", ""]
+		},
+		"gameboardTiles": {
+			"activeTiles": [true, true, true, true, true, true, true, true, true],
+			"frameKeys": ["QC35", "QC16", "QC14", "QC14", "QC17","QC30", "QC31","QC23","BLANK"]
+		}
+	},
+	{
+		"correctSelection": "QC04",
+		"selectionTiles": {
+			"activeTiles": [true, true, false, true, true, false, false, false, false],
+			"frameKeys": ["QC05", "QC04", "", "DC34", "DC35", "", "", "", ""]
+		},
+		"gameboardTiles": {
+			"activeTiles": [true, true, true, true, true, true, true, true, true],
+			"frameKeys": ["SC03", "DC32", "SC07", "DC35", "BLANK", "DC33", "SC10", "DC34", "SC03"]
+		}
+	},
+	{
+    "correctSelection": "TRIANGLE",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["CIRCLE", "", "", "DIMOND", "", "", "TRIANGLE", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["TRIANGLE", "TRIANGLE", "", "TRIANGLE", "BLANK", "", "", "", ""]
+    }
+	},
+
+  {
+    "correctSelection": "SQUARE",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["SQUARE", "", "", "DIMOND", "", "", "CIRCLE", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SQUARE", "SQUARE", "", "BLANK", "SQUARE", "", "", "", ""]
+    }
+	},
+
+  {
+    "correctSelection": "CIRCLE",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["SQUARE", "", "", "DIMOND", "", "", "CIRCLE", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["CIRCLE", "BLANK", "", "CIRCLE", "CIRCLE", "", "", "", ""]
+    }
+	},
+
+  {
+    "correctSelection": "DIMOND",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["SQUARE", "", "", "CIRCLE", "", "", "DIMOND", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, true, true, true, true, true, true, true],
+      "frameKeys": ["DIMOND", "BLANK", "DIMOND", "DIMOND", "DIMOND", "SQUARE", "CIRCLE", "DIMOND", "CIRCLE"]
+    }
+	},
+
+]

@@ -1,0 +1,14 @@
+[
+	{
+    "correctSelection": "TRIANGLE",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["CIRCLE", "", "", "DIMOND", "", "", "TRIANGLE", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["TRIANGLE", "TRIANGLE", "", "TRIANGLE", "BLANK", "", "", "", ""]
+    }
+	}
+  
+]

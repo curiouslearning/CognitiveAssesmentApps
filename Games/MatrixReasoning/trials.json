@@ -1,0 +1,324 @@
+[
+	{
+    "correctSelection": "SC01",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["SC01", "", "", "SC02", "", "", "SC03", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SC01", "SC01", "", "SC01", "BLANK", "", "", "", ""]
+    }
+	},
+
+  {
+    "correctSelection": "SC06",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["SC06", "", "", "SC07", "", "", "SC05", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SC07", "SC07", "", "BLANK", "SC06", "", "", "", ""]
+    }
+	},
+
+  {
+    "correctSelection": "SC08",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["SC08", "", "", "SC09", "", "", "SC10", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SC09", "SC09", "", "BLANK", "SC08", "", "", "", ""]
+    }
+	},
+
+  {
+    "correctSelection": "SC03",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["SC07", "", "", "SC03", "", "", "SC10", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SC03", "SC03", "", "BLANK", "SC03", "", "", "", ""]
+    }
+	},
+  {
+    "correctSelection": "SC09",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["SC06", "", "", "SC02", "", "", "SC09", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SC09", "SC09", "", "BLANK", "SC09", "", "", "", ""]
+    }
+	},
+	{
+    "correctSelection": "SC07",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["SC07", "", "", "SC03", "", "", "SC10", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SC07", "SC07", "", "BLANK", "SC07", "", "", "", ""]
+    }
+	},
+  {
+    "correctSelection": "SC02",
+    "selectionTiles": {
+      "activeTiles": [true, true, false, true, false, false, true, false, false],
+      "frameKeys": ["SC03", "SC09", "", "SC02", "", "", "SC10", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SC03", "SC03", "", "BLANK", "SC02", "", "", "", ""]
+    }
+	},
+  {
+    "correctSelection": "SC09",
+    "selectionTiles": {
+      "activeTiles": [true, true, false, true, false, false, true, false, false],
+      "frameKeys": ["SC01", "SC09", "", "SC02", "", "", "SC08", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SC08", "SC08", "", "BLANK", "SC09", "", "", "", ""]
+    }
+	},
+  {
+    "correctSelection": "SC07",
+    "selectionTiles": {
+      "activeTiles": [true, true, false, true, false, false, true, false, false],
+      "frameKeys": ["SC07", "SC05", "", "SC08", "", "", "SC10", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SC05", "SC05", "", "BLANK", "SC07", "", "", "", ""]
+    }
+	},
+  {
+    "correctSelection": "SC08",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["SC05", "", "", "SC01", "", "", "SC08", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SC10", "SC07", "", "BLANK", "SC05", "", "", "", ""]
+    }
+	},
+  {
+    "correctSelection": "SC02",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["SC02", "", "", "SC06", "", "", "SC09", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SC03", "SC07", "", "BLANK", "SC06", "", "", "", ""]
+    }
+	},
+  {
+    "correctSelection": "SC06",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["SC02", "", "", "SC06", "", "", "SC09", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SC05", "SC08", "", "BLANK", "SC09", "", "", "", ""]
+    }
+	},
+  {
+    "correctSelection": "SC10",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["SC05", "", "", "SC10", "", "", "SC08", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SC07", "SC05", "", "BLANK", "SC08", "", "", "", ""]
+    }
+	},
+  {
+    "correctSelection": "SC01",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["SC02", "", "", "SC01", "", "", "SC09", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SC08", "SC09", "", "BLANK", "SC02", "", "", "", ""]
+    }
+	},
+  {
+    "correctSelection": "SC06",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, false, false],
+      "frameKeys": ["SC06", "", "", "SC07", "", "", "SC03", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["SC02", "SC03", "", "BLANK", "SC07", "", "", "", ""]
+    }
+	},
+  {
+    "correctSelection": "SC09",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, true, true, false, false],
+      "frameKeys": ["SC09", "", "", "SC29", "", "SC15", "SC19", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, true, true, true, true, true, true, true],
+      "frameKeys": ["SC03", "SC23", "SC03", "SC05", "SC25", "SC05", "SC09", "SC29", "BLANK"]
+    }
+	},
+	{
+    "correctSelection": "SC29",
+    "selectionTiles": {
+      "activeTiles": [true, true, false, true, false, false, true, false, false],
+      "frameKeys": ["SC29", "SC26", "", "SC09", "", "", "SC28", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, true, true, true, true, true, true, true],
+      "frameKeys": ["SC03", "SC13", "SC23", "SC05", "SC15", "SC25", "SC09", "SC19", "BLANK"]
+    }
+	},
+  {
+    "correctSelection": "SC28",
+    "selectionTiles": {
+      "activeTiles": [true, true, false, true, false, false, true, false, false],
+      "frameKeys": ["SC25", "SC08", "", "SC28", "", "", "SC01", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, true, true, true, true, true, true, true],
+      "frameKeys": ["SC02", "SC02", "SC22", "SC07", "SC07", "SC27", "SC08", "SC08", "BLANK"]
+    }
+	},
+  {
+    "correctSelection": "DC04",
+    "selectionTiles": {
+      "activeTiles": [true, false, false, true, false, false, true, true, false],
+      "frameKeys": ["DC06", "", "", "DC04", "", "", "DC05", "DC07", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["DC01", "DC02", "", "DC03", "BLANK", "", "", "", ""]
+    }
+	},
+  {
+    "correctSelection": "DC11",
+    "selectionTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["DC14", "DC13", "", "DC11", "DC12", "", "", "", ""]
+    },
+    "gameboardTiles": {
+      "activeTiles": [true, true, false, true, true, false, false, false, false],
+      "frameKeys": ["DC08", "DC09", "", "DC10", "BLANK", "", "", "", ""]
+    }
+	},
+	{
+		"correctSelection": "DC23",
+		"selectionTiles": {
+			"activeTiles": [true, true, false, true, true, false, false, false, false],
+			"frameKeys": ["DC23", "DC20", "", "DC22", "DC24", "", "", "", ""]
+		},
+		"gameboardTiles": {
+			"activeTiles": [true, true, false, true, true, false, false, false, false],
+			"frameKeys": ["DC20", "DC21", "", "DC22", "BLANK", "", "", "", ""]
+		}
+	},
+	{
+		"correctSelection": "DC31",
+		"selectionTiles": {
+			"activeTiles": [true, true, false, true, true, false, false, false, false],
+			"frameKeys": ["DC29", "DC12", "", "DC30", "DC31", "", "", "", ""]
+		},
+		"gameboardTiles": {
+			"activeTiles": [true, true, false, true, true, false, false, false, false],
+			"frameKeys": ["DC12", "DC29", "", "DC30", "BLANK", "", "", "", ""]
+		}
+	},
+	{
+		"correctSelection": "QC01",
+		"selectionTiles": {
+			"activeTiles": [true, true, false, true, true, false, false, false, false],
+			"frameKeys": ["QC01", "QC02", "", "DC40", "DC41", "", "", "", ""]
+		},
+		"gameboardTiles": {
+			"activeTiles": [true, true, true, true, true, true, true, true, true],
+			"frameKeys": ["SC05", "DC36", "SC08", "DC39", "BLANK", "DC37", "SC01", "DC38", "SC05"]
+		}
+	},
+	{
+		"correctSelection": "QC04",
+		"selectionTiles": {
+			"activeTiles": [true, true, false, true, true, false, false, false, false],
+			"frameKeys": ["QC05", "QC04", "", "DC34", "DC35", "", "", "", ""]
+		},
+		"gameboardTiles": {
+			"activeTiles": [true, true, true, true, true, true, true, true, true],
+			"frameKeys": ["SC03", "DC32", "SC07", "DC35", "BLANK", "DC33", "SC10", "DC34", "SC03"]
+		}
+	},
+	{
+		"correctSelection": "DC47",
+		"selectionTiles": {
+			"activeTiles": [true, false, false, true, false, false, true, false, false],
+			"frameKeys": ["DC47", "", "", "DC59", "", "", "DC58", "", ""]
+		},
+		"gameboardTiles": {
+			"activeTiles": [true, true, true, true, true, true, true, true, true],
+			"frameKeys": ["SC07", "SC08", "DC56", "SC03", "SC07", "DC33", "SC09", "SC01", "BLANK"]
+		}
+	},
+	{
+		"correctSelection": "QC09",
+		"selectionTiles": {
+			"activeTiles": [true, false, false, true, false, false, true, false, false],
+			"frameKeys": ["QC08", "", "", "QC09", "", "", "QC06", "", ""]
+		},
+		"gameboardTiles": {
+			"activeTiles": [true, true, false, true, true, false, false, false, false],
+			"frameKeys": ["QC06", "QC07", "", "QC08", "BLANK","", "","",""]
+		}
+	},
+	{
+		"correctSelection": "QC13",
+		"selectionTiles": {
+			"activeTiles": [true, false, false, true, false, false, true, false, false],
+			"frameKeys": ["QC10", "", "", "QC12", "", "", "QC13", "", ""]
+		},
+		"gameboardTiles": {
+			"activeTiles": [true, true, false, true, true, false, false, false, false],
+			"frameKeys": ["QC10", "QC11", "", "QC12", "BLANK","", "","",""]
+		}
+	},
+	{
+		"correctSelection": "QC63",
+		"selectionTiles": {
+			"activeTiles": [true, false, false, true, false, false, true, false, false],
+			"frameKeys": ["QC66", "", "", "QC63", "", "", "QC72", "", ""]
+		},
+		"gameboardTiles": {
+			"activeTiles": [true, true, true, true, true, true, true, true, true],
+			"frameKeys": ["QC72", "QC67", "QC66", "QC66", "QC64","QC72", "QC63","QC79","BLANK"]
+		}
+	},
+	{
+		"correctSelection": "QC17",
+		"selectionTiles": {
+			"activeTiles": [true, false, false, true, false, false, true, false, false],
+			"frameKeys": ["QC14", "", "", "QC17", "", "", "QC27", "", ""]
+		},
+		"gameboardTiles": {
+			"activeTiles": [true, true, true, true, true, true, true, true, true],
+			"frameKeys": ["QC35", "QC16", "QC14", "QC14", "QC17","QC30", "QC31","QC23","BLANK"]
+		}
+	}
+]
