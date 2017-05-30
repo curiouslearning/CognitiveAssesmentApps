@@ -3,6 +3,7 @@ import {
   View,
   Image,
   AppState,
+  AsyncStorage,
 } from 'react-native';
 
 import _ from 'lodash';
@@ -29,12 +30,11 @@ import gameTiles from './gameTiles';
 import styles from "./styles";
 import gameUtil from './gameUtil';
 
-
+const GAME_TIME_OUT = 15000;
 const Sound = require('react-native-sound');
 const SCREEN_WIDTH = require ('Dimensions').get('window').width;
 const SCREEN_HEIGHT = require ('Dimensions').get('window').height;
 
-const GAME_TIME_OUT = 5115000;
 // each level starts at the assigned trial number
 const LEVEL_1A = 0;
 const LEVEL_1B = 0;
@@ -66,6 +66,7 @@ class UnlockFoodGame extends React.Component {
       lightbulbDisplayed: false,
       arrowIndex: 1,
       leds: gameTiles.ledController([], 3),
+      devMode: false,
     };
     this.ledsOn = [];
     this.numLeds = 3;
@@ -137,14 +138,15 @@ class UnlockFoodGame extends React.Component {
       duration: 1500,
       loop: false,
     };
+    AsyncStorage.getItem('@User:pref', (err, result) => {
+      console.log(`GETTING = ${JSON.stringify(result)}`);
+      const prefs = JSON.parse(result);
+      this.setState({ devMode: prefs.developMode }, 
+        () => this.startInactivityMonitor());
+    });
   }
 
   componentDidMount () {
-    this.timeoutGameOver = setTimeout(()=>{
-      this.props.navigator.replace({
-        id: "Main",
-      });
-    }, GAME_TIME_OUT);
     this.initSounds();
     AppState.addEventListener('change', this._handleAppStateChange);
   }
@@ -158,7 +160,19 @@ class UnlockFoodGame extends React.Component {
     clearTimeout(this.btnTimeout);
     clearInterval(this.matrixShifterInterval);
     clearTimeout(this.blinkTimeout);
+    clearTimeout(this.timeoutGameOver);
     _.forEach(this.blinkTimeoutArray, blinkTimeout => clearTimeout(blinkTimeout));
+  }
+  
+  startInactivityMonitor () {
+    if (!this.state.devMode) {
+      this.timeoutGameOver = setTimeout(() => {
+        this.props.navigator.replace({
+          id: "Main",
+        });
+        // game over when 15 seconds go by without bubble being popped
+      }, GAME_TIME_OUT);
+    }
   }
 
   initSounds () {
@@ -328,6 +342,8 @@ class UnlockFoodGame extends React.Component {
     });
     this.leverOn = true;
     this.blink(blinkSeq);
+    clearTimeout(this.timeoutGameOver);
+    this.startInactivityMonitor();
   }
 
   blink (blinkSeq) {
@@ -626,6 +642,8 @@ class UnlockFoodGame extends React.Component {
       this.activeGameboard = false;
       this.characterDisapointed();
     }
+    clearTimeout(this.timeoutGameOver);
+    this.startInactivityMonitor();
   }
 
   onLoadScreenFinish () {
@@ -761,15 +779,17 @@ class UnlockFoodGame extends React.Component {
               onPressOut={() => this.leverPressOut()}
             />
 
-            <HomeButton
-              route={this.props.route}
-              navigator={this.props.navigator}
-              routeId={{ id: 'Main' }}
-              styles={{
-                width: 150 * this.scale.image,
-                height: 150 * this.scale.image,
-                top:0, left: 0, position: 'absolute' }}
-            />
+            {this.state.devMode ?
+              <HomeButton
+                route={this.props.route}
+                navigator={this.props.navigator}
+                routeId={{ id: 'Main' }}
+                styles={{
+                  width: 150 * this.scale.image,
+                  height: 150 * this.scale.image,
+                  top:0, left: 0, position: 'absolute' }}
+              />
+            : null}
 
             {this.state.loadingScreen ?
               <LoadScreen
@@ -780,6 +800,7 @@ class UnlockFoodGame extends React.Component {
             : null}
 
           </Image>
+          
         </View>
     );
   }

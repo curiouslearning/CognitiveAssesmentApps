@@ -29,7 +29,7 @@ const SCREEN_WIDTH = require('Dimensions').get('window').width;
 const SCREEN_HEIGHT = require('Dimensions').get('window').height;
 const TOP_OFFSET = 20;
 
-const GAME_TIME_OUT = 115000;
+const GAME_TIME_OUT = 15000;
 const MAX_NUMBER_BUBBLES = 10;
 
 class BubblesGame extends React.Component {
@@ -45,7 +45,7 @@ class BubblesGame extends React.Component {
       loadContent: false,
       showFood: false,
       loadingScreen: true,
-      showLaunchBtn: true,
+      devMode: false,
     };
     this.scale = this.props.scale;
     this.spriteUIDs = {};
@@ -73,7 +73,9 @@ class BubblesGame extends React.Component {
     AsyncStorage.getItem('@User:pref', (err, result) => {
       console.log(`GETTING = ${JSON.stringify(result)}`);
       const prefs = JSON.parse(result);
-      this.setState({ showLaunchBtn: prefs.developMode });
+      this.setState({ devMode: prefs.developMode }, 
+        () => this.startInactivityMonitor());
+      
     });
     this.setState({
       bubbleAnimationIndex: bubbleCharacter.animationIndex('ALL'),
@@ -91,14 +93,20 @@ class BubblesGame extends React.Component {
 
   componentDidMount () {
     // start trial timeout
-    this.timeoutGameOver = setTimeout(() => {
-      this.props.navigator.replace({
-        id: "Main",
-      });
-      // game over when 15 seconds go by without bubble being popped
-    }, GAME_TIME_OUT);
+    this.startInactivityMonitor();
     this.initSounds();
     AppState.addEventListener('change', this._handleAppStateChange);
+  }
+  
+  startInactivityMonitor () {
+    if (!this.state.devMode) {
+      this.timeoutGameOver = setTimeout(() => {
+        this.props.navigator.replace({
+          id: "Main",
+        });
+        // game over when 15 seconds go by without bubble being popped
+      }, GAME_TIME_OUT);
+    }
   }
 
   componentWillUnmount () {
@@ -421,6 +429,8 @@ class BubblesGame extends React.Component {
       this.popSound.play(() => {this.popPlaying = false;});
     }
     this.foodFall(stopValueX, stopValueY);
+    clearTimeout(this.timeoutGameOver);
+    this.startInactivityMonitor();
   }
 
   targetBubbleTweenFinish () {
@@ -439,6 +449,8 @@ class BubblesGame extends React.Component {
     this.bubbleFountainInterval = setInterval(() => {
       this.createBubbles();
     }, 200);
+    clearTimeout(this.timeoutGameOver);
+    this.startInactivityMonitor();
   }
 
   leverPress () {
@@ -600,7 +612,7 @@ class BubblesGame extends React.Component {
             size={{ width: fountainCharacter.size.width * this.scale.image,
               height: fountainCharacter.size.height * this.scale.image}}
           />
-        {this.state.showLaunchBtn ?
+        {this.state.devMode ?
           <HomeButton
             route={this.props.route}
             navigator={this.props.navigator}

@@ -3,6 +3,7 @@ import {
   View,
   Image,
   AppState,
+  AsyncStorage,
 } from 'react-native';
 
 import _ from 'lodash';
@@ -19,7 +20,7 @@ import dogSprite from '../../sprites/dog/dogCharacter';
 import gameTiles from './gameTiles';
 
 const Sound = require('react-native-sound');
-
+const GAME_TIME_OUT = 15000;
 const SCREEN_WIDTH = require('Dimensions').get('window').width;
 const SCREEN_HEIGHT = require('Dimensions').get('window').height;
 
@@ -36,6 +37,7 @@ class MatrixReasoningGame extends React.Component {
         frameIndex: [0],
       },
       loadingScreen: true,
+      devMode: false,
     };
     this.gameCharacters = ['dog', 'hookedCard'];
     this.characterUIDs = this.makeCharacterUIDs(this.gameCharacters);
@@ -50,6 +52,12 @@ class MatrixReasoningGame extends React.Component {
   componentWillMount () {
     this.readyTrial(0);
     this.loadCharacter();
+    AsyncStorage.getItem('@User:pref', (err, result) => {
+      console.log(`GETTING = ${JSON.stringify(result)}`);
+      const prefs = JSON.parse(result);
+      this.setState({ devMode: prefs.developMode }, 
+        () => this.startInactivityMonitor());
+    });
   }
 
   componentDidMount () {
@@ -60,7 +68,19 @@ class MatrixReasoningGame extends React.Component {
   componentWillUnmount () {
     this.releaseSounds();
     clearInterval(this.matrixShifterInterval);
-    clearTimeout(this.readTrialTimeout);
+    clearTimeout(this.readyTrialTimeout);
+    clearTimeout(this.timeoutGameOver);
+  }
+  
+  startInactivityMonitor () {
+    if (!this.state.devMode) {
+      this.timeoutGameOver = setTimeout(() => {
+        this.props.navigator.replace({
+          id: "Main",
+        });
+        // game over when 15 seconds go by without bubble being popped
+      }, GAME_TIME_OUT);
+    }
   }
 
   initSounds () {
@@ -161,13 +181,11 @@ class MatrixReasoningGame extends React.Component {
       dogSprite.animationIndex(action),
       dogSprite.animationIndex(action)
     );
-    this.setState(
-      {
-        dog,
-      }, () => {
-        this.readTrialTimeout = setTimeout(() => {
+    this.setState({ dog }, 
+      () => {
+        this.readyTrialTimeout = setTimeout(() => {
           this.readyTrial(this.state.trial + 1);
-        }, 2000);
+      }, 2000);
     });
 
   }
@@ -196,6 +214,8 @@ class MatrixReasoningGame extends React.Component {
     } else {
       this.gameCharacterAction('DISGUST');
     }
+    clearTimeout(this.timeoutGameOver);
+    this.startInactivityMonitor();
   }
 
   onLoadScreenFinish () {
@@ -261,17 +281,17 @@ class MatrixReasoningGame extends React.Component {
           onPress={(tile, index) => this.gameBoardTilePress(tile, index)}
         />
 
-        <HomeButton
-          route={this.props.route}
-          navigator={this.props.navigator}
-          routeId={{id: 'Main'}}
-          styles={{
-            width: 150 * this.props.scale.image,
-            height: 150 * this.props.scale.image,
-            top: 0, left: 0,
-            position: 'absolute',
-          }}
-        />
+        {this.state.devMode ?
+          <HomeButton
+            route={this.props.route}
+            navigator={this.props.navigator}
+            routeId={{ id: 'Main' }}
+            styles={{
+              width: 150 * this.scale.image,
+              height: 150 * this.scale.image,
+              top:0, left: 0, position: 'absolute' }}
+          />
+        : null}
 
         {this.state.loadingScreen ?
           <LoadScreen

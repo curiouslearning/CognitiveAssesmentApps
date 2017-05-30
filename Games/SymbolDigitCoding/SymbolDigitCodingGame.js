@@ -3,6 +3,7 @@ import {
   View,
   Image,
   AppState,
+  AsyncStorage,
 } from 'react-native';
 
 import _ from 'lodash';
@@ -22,7 +23,7 @@ import Signs from './Signs';
 import gameUtil from './gameUtil';
 
 const Sound = require('react-native-sound');
-
+const GAME_TIME_OUT = 15000;
 const SCREEN_WIDTH = require('Dimensions').get('window').width;
 const SCREEN_HEIGHT = require('Dimensions').get('window').height;
 
@@ -36,6 +37,7 @@ class SymbolDigitCodingGame extends React.Component {
       monsterAnimationIndex: [0],
       thoughtTiles: {},
       loadingScreen: true,
+      devMode: false,
     };
     this.monsterScale = 1.5;
     this.tableScale = 1.3;
@@ -56,7 +58,6 @@ class SymbolDigitCodingGame extends React.Component {
 
   componentWillMount () {
     const trial = 0;
-
     this.food.sprite = gameUtil.foodSprite(trial);
     this.food.coords = this.foodStartLocation(1);
     this.food.size = this.spriteSize(this.food.sprite, 1);
@@ -66,8 +67,13 @@ class SymbolDigitCodingGame extends React.Component {
       symbolOrder: gameUtil.symbols(trial),
       thoughtTiles: gameUtil.thoughtTilesForTrial(trial),
     });
-
     this.loadSpriteAssets();
+    AsyncStorage.getItem('@User:pref', (err, result) => {
+      console.log(`GETTING = ${JSON.stringify(result)}`);
+      const prefs = JSON.parse(result);
+      this.setState({ devMode: prefs.developMode }, 
+        () => this.startInactivityMonitor());
+    });
   }
 
   loadSpriteAssets () {
@@ -87,6 +93,18 @@ class SymbolDigitCodingGame extends React.Component {
   componentWillUnmount () {
     this.releaseSounds();
     clearTimeout(this.stateTimeout);
+    clearTimeout(this.timeoutGameOver);
+  }
+  
+  startInactivityMonitor () {
+    if (!this.state.devMode) {
+      this.timeoutGameOver = setTimeout(() => {
+        this.props.navigator.replace({
+          id: "Main",
+        });
+        // game over when 15 seconds go by without bubble being popped
+      }, GAME_TIME_OUT);
+    }
   }
 
   initSounds () {
@@ -258,6 +276,8 @@ class SymbolDigitCodingGame extends React.Component {
         }, 500 * this.props.scale.screenHeight);
       });
     }
+    clearTimeout(this.timeoutGameOver);
+    this.startInactivityMonitor();
   }
 
   onFoodTweenFinish () {
@@ -369,15 +389,17 @@ class SymbolDigitCodingGame extends React.Component {
           rotate={[{rotateY:'0deg'}]}
         />
 
-        <HomeButton
-          route={this.props.route}
-          navigator={this.props.navigator}
-          routeId={{ id: 'Main' }}
-          styles={{
-            width: 150 * this.props.scale.image,
-            height: 150 * this.props.scale.image,
-            top:0, left: 0, position: 'absolute' }}
-        />
+        {this.state.devMode ?
+          <HomeButton
+            route={this.props.route}
+            navigator={this.props.navigator}
+            routeId={{ id: 'Main' }}
+            styles={{
+              width: 150 * this.scale.image,
+              height: 150 * this.scale.image,
+              top:0, left: 0, position: 'absolute' }}
+          />
+        : null}
 
         {this.state.loadingScreen ?
           <LoadScreen

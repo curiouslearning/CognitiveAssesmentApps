@@ -3,6 +3,7 @@ import {
   Image,
   View,
   AppState,
+  AsyncStorage,
 } from 'react-native';
 
 import _ from 'lodash';
@@ -27,7 +28,7 @@ const Sound = require('react-native-sound');
 const SCREEN_WIDTH = require('Dimensions').get('window').width;
 const SCREEN_HEIGHT = require('Dimensions').get('window').height;
 // const PIXEL_RATIO = 1 / PixelRatio.get();
-
+const GAME_TIME_OUT = 15000;
 const LEFT = 0;
 const MIDDLE = 1;
 const RIGHT = 2;
@@ -54,6 +55,7 @@ class MatchByColorGame extends React.Component {
       foodDisplayed: false,
       level: LEVEL01,
       loadingScreen: true,
+      devMode: false,
     };
     this.numTrialsForCurrentLevel = 0;
     this.level = LEVEL01;
@@ -72,7 +74,6 @@ class MatchByColorGame extends React.Component {
 
     this.showFoodTimeout;
     this.signTimeout;
-    this.trialTimer;
     this.setDefaultAnimationState;
     this.eatTimeout;
     this.switchCharacterTimeout;
@@ -102,6 +103,13 @@ class MatchByColorGame extends React.Component {
 
     this.leverSprite = leverSprite;
     this.leverSprite.tweenOptions = {tweenOptions: {}};
+    AsyncStorage.getItem('@User:pref', (err, result) => {
+      console.log(`GETTING = ${JSON.stringify(result)}`);
+      const prefs = JSON.parse(result);
+      this.setState({ devMode: prefs.developMode }, 
+        () => this.startInactivityMonitor());
+      
+    });
   }
 
   componentDidMount () {
@@ -114,12 +122,23 @@ class MatchByColorGame extends React.Component {
     this.releaseSounds();
     clearTimeout(this.showFoodTimeout);
     clearTimeout(this.signTimeout);
-    clearTimeout(this.trialTimer);
     clearTimeout(this.setDefaultAnimationState);
     clearTimeout(this.eatTimeout);
     clearTimeout(this.switchCharacterTimeout);
+    clearTimeout(this.timeoutGameOver);
   }
-
+  
+  startInactivityMonitor () {
+    if (!this.state.devMode) {
+      this.timeoutGameOver = setTimeout(() => {
+        this.props.navigator.replace({
+          id: "Main",
+        });
+        // game over when 15 seconds go by without bubble being popped
+      }, GAME_TIME_OUT);
+    }
+  }
+  
   initSounds () {
     this.signSound = new Sound('cards_drop.mp3', Sound.MAIN_BUNDLE, (error) => {
       if (error) {
@@ -334,13 +353,6 @@ class MatchByColorGame extends React.Component {
     }
   }
 
-  startTrialTimer () {
-    // clearTimeout(this.trialTimer);
-    // this.trialTimer = setTimeout(()=>{
-    //   this.clearScene();
-    // }, TRIAL_TIMEOUT);
-  }
-
   leverPress () {
     // console.log('leverPressIn');
   }
@@ -380,7 +392,6 @@ class MatchByColorGame extends React.Component {
     }
     this.numTrialsForCurrentLevel = this.incrementTrialCount(this.numTrialsForCurrentLevel);
 
-    clearTimeout(this.trialTimer);
     // creature enter from left
     const startLocation = this.characterStartLocation(this.activeCharacter, this.scale.image);
     const moveFrom = [startLocation.left, startLocation.top]; //[startLocation[1], startLocation[0]]; //[startLocation[1], startLocation[0]];
@@ -403,9 +414,10 @@ class MatchByColorGame extends React.Component {
       this.showFoodTimeout = setTimeout(() => {
         this.displayFoods();
         this.foodActive = true;
-        this.startTrialTimer();
       }, this.signDropTime);
     });
+    clearTimeout(this.timeoutGameOver);
+    this.startInactivityMonitor();
   }
 
   leverPressOut () {
@@ -539,7 +551,6 @@ class MatchByColorGame extends React.Component {
       this.unhappyAndLeaving();
       return;
     }
-    clearTimeout(this.trialTimer);
 
     const foodDropTime = 800;
     let coords;
@@ -561,12 +572,13 @@ class MatchByColorGame extends React.Component {
         this.foodDropToCharacter('rightFood', foodCoord, foodDropTime);
         break;
     }
+    clearTimeout(this.timeoutGameOver);
+    this.startInactivityMonitor();
   }
 
   clearScene () {
     console.log('!! clearScene()');
     this.clearingScene = true;
-    clearTimeout(this.trialTimer);
     this.initializeMoveUpTweensForSigns();
 
     const timeToExit = 1800;
@@ -797,15 +809,17 @@ class MatchByColorGame extends React.Component {
           onTweenFinish={(characterUID) => this.onCharacterTweenFinish(characterUID)}
         />
 
-      <HomeButton
-        route={this.props.route}
-        navigator={this.props.navigator}
-        routeId={{ id: 'Main' }}
-        styles={{
-          width: 150 * this.scale.image,
-          height: 150 * this.scale.image,
-          top:0, left: 0, position: 'absolute' }}
-      />
+      {this.state.devMode ?
+        <HomeButton
+          route={this.props.route}
+          navigator={this.props.navigator}
+          routeId={{ id: 'Main' }}
+          styles={{
+            width: 150 * this.scale.image,
+            height: 150 * this.scale.image,
+            top:0, left: 0, position: 'absolute' }}
+        />
+      : null}
       {this.state.loadingScreen ?
         <LoadScreen
           onTweenFinish={() => this.onLoadScreenFinish()}
