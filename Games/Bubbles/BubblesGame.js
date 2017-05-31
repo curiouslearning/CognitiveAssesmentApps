@@ -73,9 +73,9 @@ class BubblesGame extends React.Component {
     AsyncStorage.getItem('@User:pref', (err, result) => {
       console.log(`GETTING = ${JSON.stringify(result)}`);
       const prefs = JSON.parse(result);
-      this.setState({ devMode: prefs.developMode }, 
+      this.setState({ devMode: prefs.developMode },
         () => this.startInactivityMonitor());
-      
+
     });
     this.setState({
       bubbleAnimationIndex: bubbleCharacter.animationIndex('ALL'),
@@ -97,7 +97,7 @@ class BubblesGame extends React.Component {
     this.initSounds();
     AppState.addEventListener('change', this._handleAppStateChange);
   }
-  
+
   startInactivityMonitor () {
     if (!this.state.devMode) {
       this.timeoutGameOver = setTimeout(() => {
