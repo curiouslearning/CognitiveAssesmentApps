@@ -106,9 +106,9 @@ class MatchByColorGame extends React.Component {
     AsyncStorage.getItem('@User:pref', (err, result) => {
       console.log(`GETTING = ${JSON.stringify(result)}`);
       const prefs = JSON.parse(result);
-      this.setState({ devMode: prefs.developMode }, 
+      this.setState({ devMode: prefs.developMode },
         () => this.startInactivityMonitor());
-      
+
     });
   }
 
@@ -127,7 +127,7 @@ class MatchByColorGame extends React.Component {
     clearTimeout(this.switchCharacterTimeout);
     clearTimeout(this.timeoutGameOver);
   }
-  
+
   startInactivityMonitor () {
     if (!this.state.devMode) {
       this.timeoutGameOver = setTimeout(() => {
@@ -138,7 +138,7 @@ class MatchByColorGame extends React.Component {
       }, GAME_TIME_OUT);
     }
   }
-  
+
   initSounds () {
     this.signSound = new Sound('cards_drop.mp3', Sound.MAIN_BUNDLE, (error) => {
       if (error) {

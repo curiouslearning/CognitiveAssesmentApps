@@ -5,11 +5,11 @@ const bugCharacter = {
   animationTypes: ['GREEN','BLUE','RED','YELLOW', 'GREY', 'ALL'],
   frames: [
     // require("./prettybug_idle03.png"),
+    require("./bug_grey.png"),
     require("./bug_green.png"),
     require("./bug_blue.png"),
     require("./bug_red.png"),
     require("./bug_yellow.png"),
-    require("./bug_grey.png"),
   ],
   animationIndex: function getAnimationIndex (animationType) {
     switch (animationType) {
