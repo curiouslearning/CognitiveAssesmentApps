@@ -397,8 +397,8 @@ class SymbolDigitCodingGame extends React.Component {
             navigator={this.props.navigator}
             routeId={{ id: 'Main' }}
             styles={{
-              width: 150 * this.scale.image,
-              height: 150 * this.scale.image,
+              width: 150 * this.props.scale.image,
+              height: 150 * this.props.scale.image,
               top:0, left: 0, position: 'absolute' }}
           />
         : null}
