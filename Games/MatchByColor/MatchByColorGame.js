@@ -128,7 +128,7 @@ class MatchByColorGame extends React.Component {
     clearTimeout(this.switchCharacterTimeout);
     clearTimeout(this.timeoutGameOver);
   }
-  
+
   startInactivityMonitor () {
     if (!this.state.devMode) {
       this.timeoutGameOver = setTimeout(() => {
@@ -139,7 +139,7 @@ class MatchByColorGame extends React.Component {
       }, GAME_TIME_OUT);
     }
   }
-  
+
   initSounds () {
     this.signSound = new Sound('cards_drop.mp3', Sound.MAIN_BUNDLE, (error) => {
       if (error) {

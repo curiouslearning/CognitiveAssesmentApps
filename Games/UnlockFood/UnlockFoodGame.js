@@ -58,7 +58,7 @@ class UnlockFoodGame extends React.Component {
       lightbulbAnimationIndex: [0],
       showFood: true,
       tiles: {},
-      trial: 4,
+      trial: 0,
       loadingScreen: true,
       blackout: false,
       lightbulbTweenOptions: null,

@@ -98,7 +98,7 @@ class BubblesGame extends React.Component {
     this.initSounds();
     AppState.addEventListener('change', this._handleAppStateChange);
   }
-  
+
   startInactivityMonitor () {
     if (!this.state.devMode) {
       this.timeoutGameOver = setTimeout(() => {
