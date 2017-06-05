@@ -91,7 +91,6 @@ class MatrixReasoningGame extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.popSound.setSpeed(1);
       this.popSound.setNumberOfLoops(0);
       this.popSound.setVolume(1);
     });
@@ -100,7 +99,6 @@ class MatrixReasoningGame extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.celebrateSound.setSpeed(1);
       this.celebrateSound.setNumberOfLoops(0);
       this.celebrateSound.setVolume(1);
     });
@@ -109,7 +107,6 @@ class MatrixReasoningGame extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.disgustSound.setSpeed(1);
       this.disgustSound.setNumberOfLoops(0);
       this.disgustSound.setVolume(0.9);
     });
@@ -230,13 +227,8 @@ class MatrixReasoningGame extends React.Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Image source={require('../../media/backgrounds/Game_4_Background_1280.png')} style={{
-          width: 1280 * this.props.scale.screenWidth,
-          height: 800 * this.props.scale.screenHeight,
-          flex: 1,
-        }}
-        />
+        <Image source={require('../../media/backgrounds/Game_4_Background_1280.png')} 
+          style={styles.backgroundImage}>
         <AnimatedSprite
           sprite={dogSprite}
           spriteUID={this.characterUIDs.dog}
@@ -302,7 +294,7 @@ class MatrixReasoningGame extends React.Component {
             height={SCREEN_HEIGHT}
           />
         : null}
-      </View>
+      </Image>
     );
   }
 

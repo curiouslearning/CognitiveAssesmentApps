@@ -1,24 +1,41 @@
+import {
+  StyleSheet,
+} from 'react-native';
 
-import { StyleSheet, PixelRatio } from 'react-native';
-
-const PIXEL_RATIO = PixelRatio.get();
 const SCREEN_WIDTH = require('Dimensions').get('window').width;
 const SCREEN_HEIGHT = require('Dimensions').get('window').height;
 
-const styles = StyleSheet.create({
-  // styles for background png image/basic black backgroundColor
-  // to go behind it
+const MatchColorStyles = StyleSheet.create ({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    height: SCREEN_HEIGHT,
+    width: SCREEN_WIDTH,
+    flexDirection: 'row',
+  },
+  row: {
+    flex: 1,
+    flexDirection: 'row',
   },
   backgroundImage: {
     flex: 1,
     height: SCREEN_HEIGHT,
     width: SCREEN_WIDTH,
   },
+  button: {
+    backgroundColor: '#4d94ff',
+    borderRadius: 10,
+    width: 100,
+    height: 50,
+    position: 'absolute',
+    justifyContent: 'center',
+  },
+  blackout: {
+    flex: 1,
+    backgroundColor: 'black',
+    height: SCREEN_HEIGHT,
+    width: SCREEN_WIDTH,
+    position: 'absolute',
+  },
 });
 
-export default {
-  styles,
-};
+export default MatchColorStyles;

@@ -31,50 +31,27 @@ const screenHeight = Dimensions.get('window').height;
 class CogPlay extends React.Component {
   constructor (props) {
     super(props);
-    const scaleWidth =  screenWidth / baseWidth ;
-    const scaleHeight = screenHeight / baseHeight ;
+    const scaleWidth =  screenWidth / baseWidth;
+    const scaleHeight = screenHeight / baseHeight;
+    console.log(`screenWidth = ${screenWidth}, screenHeight = ${screenHeight}`);
+    console.log(`\n\n!*!screenWidth = ${scaleWidth}`)
+    console.log(`!*!scaleHeight = ${scaleHeight}\n\n`)
+    
     this.scale = {
       screenWidth: scaleWidth,
       screenHeight: scaleHeight,
       image: scaleHeight > scaleWidth ? scaleWidth : scaleHeight,
     };
-    this.ambient;
   }
 
   componentDidMount () {
-    // Note that file location is always relative to android/app/src/main/res/raw
-    // this.ambient = new Sound('ambient_swamp.mp3', Sound.MAIN_BUNDLE, (error) => {
-    //   if (error) {
-    //     console.warn('failed to load the sound', error);
-    //     return;
-    //   }
-    //   // console.warn('duration in seconds: ' + this.ambient.getDuration() + 'number of channels: ' + this.ambient.getNumberOfChannels());
-    //   this.ambient.setSpeed(1);
-    //   this.ambient.setNumberOfLoops(-1);
-    //   this.ambient.play((success) => {
-    //     if (success) {
-    //       console.warn('successfully finished playing');
-    //     } else {
-    //       console.warn('playback failed due to audio decoding errors');
-    //     }
-    //   });
-    //   this.ambient.setVolume(1);
-    // });
   }
 
   componentWillUnmount () {
     console.error('unmount index.android')
   }
 
-  endAudio () {
-    // this.ambient.stop();
-    // this.ambient.release();
-  }
-
   renderScene (route, navigator) {
-    if (route.id !== 'Main') {
-      this.endAudio();
-    }
 
     if (route.id === 'Main') {
       return <Main
@@ -119,10 +96,10 @@ class CogPlay extends React.Component {
         />);
     } else if (route.id === 'UnlockFoodGame') {
       return (<UnlockFoodGame
-        navigator={navigator}
-        route={route}
-        scale={this.scale}
-      />);
+          navigator={navigator}
+          route={route}
+          scale={this.scale}
+        />);
     } else if (route.id === 'Prefs') {
       return (<Prefs
         navigator={navigator}

@@ -183,7 +183,6 @@ class UnlockFoodGame extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.celebrateSound.setSpeed(1);
       this.celebrateSound.setNumberOfLoops(0);
       this.celebrateSound.setVolume(1);
     });
@@ -192,7 +191,6 @@ class UnlockFoodGame extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.leverSound.setSpeed(1);
       this.leverSound.setNumberOfLoops(0);
       this.leverSound.setVolume(1);
     });
@@ -202,7 +200,6 @@ class UnlockFoodGame extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.topToneSound.setSpeed(1);
       this.topToneSound.setNumberOfLoops(0);
       this.topToneSound.setVolume(1);
     });
@@ -211,7 +208,6 @@ class UnlockFoodGame extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.middleToneSound.setSpeed(1);
       this.middleToneSound.setNumberOfLoops(0);
       this.middleToneSound.setVolume(1);
     });
@@ -220,7 +216,6 @@ class UnlockFoodGame extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.bottomToneSound.setSpeed(1);
       this.bottomToneSound.setNumberOfLoops(0);
       this.bottomToneSound.setVolume(1);
     });
@@ -229,7 +224,6 @@ class UnlockFoodGame extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.disgustSound.setSpeed(1);
       this.disgustSound.setNumberOfLoops(0);
       this.disgustSound.setVolume(0.9);
     });
@@ -671,139 +665,132 @@ class UnlockFoodGame extends React.Component {
   render () {
     const fruitVisable = this.state.showFood ? true : false;
     return (
-      <View style={styles.container}>
-        <Image
-          source={require('../../media/backgrounds/Game_6_Background_1280.png')}
-          style={{
-            flex: 1,
-            width: SCREEN_WIDTH,
-            height: SCREEN_HEIGHT,
-          }}>
+      <Image
+        source={require('../../media/backgrounds/Game_6_Background_1280.png')}
+        style={styles.backgroundImage}>
 
-            <AnimatedSprite
-              visable={fruitVisable}
-              sprite={foodSprite}
-              ref={'foodRef'}
-              spriteUID={this.characterUIDs.fruit}
-              animationFrameIndex={foodSprite.animationIndex('IDLE')}
-              tweenOptions = {this.foodSprite.tweenOptions}
-              tweenStart={'fromMethod'}
-              onTweenFinish={(characterUID) => this.onFoodTweenFinish(characterUID)}
-              loopAnimation={false}
-              coordinates={this.foodSprite.coords}
-              size={this.foodSize()}
-            />
-            <AnimatedSprite
-              ref={'birdRef'}
-              sprite={birdSprite}
-              spriteUID={this.characterUIDs.bird}
-              animationFrameIndex={this.state.birdAnimationIndex}
-              loopAnimation={false}
-              coordinates={this.birdStartLocation()}
-              size={this.birdSize()}
-            />
-            <AnimatedSprite
-              sprite={beltSprite}
-              spriteUID={this.characterUIDs.belt}
-              animationFrameIndex={[0, 1]}
-              loopAnimation={true}
-              coordinates={this.conveyorBeltLocation()}
-              size={this.conveyorBeltSize()}
-            />
+          <AnimatedSprite
+            visable={fruitVisable}
+            sprite={foodSprite}
+            ref={'foodRef'}
+            spriteUID={this.characterUIDs.fruit}
+            animationFrameIndex={foodSprite.animationIndex('IDLE')}
+            tweenOptions = {this.foodSprite.tweenOptions}
+            tweenStart={'fromMethod'}
+            onTweenFinish={(characterUID) => this.onFoodTweenFinish(characterUID)}
+            loopAnimation={false}
+            coordinates={this.foodSprite.coords}
+            size={this.foodSize()}
+          />
+          <AnimatedSprite
+            ref={'birdRef'}
+            sprite={birdSprite}
+            spriteUID={this.characterUIDs.bird}
+            animationFrameIndex={this.state.birdAnimationIndex}
+            loopAnimation={false}
+            coordinates={this.birdStartLocation()}
+            size={this.birdSize()}
+          />
+          <AnimatedSprite
+            sprite={beltSprite}
+            spriteUID={this.characterUIDs.belt}
+            animationFrameIndex={[0, 1]}
+            loopAnimation={true}
+            coordinates={this.conveyorBeltLocation()}
+            size={this.conveyorBeltSize()}
+          />
 
-            <Matrix
+          <Matrix
+            styles={{
+                ...(this.ledLocation()),
+                position: 'absolute',
+                width: 400 * this.props.scale.screenWidth,
+                height: 130 * this.props.scale.screenHeight,
+              }}
+            tileScale={1}
+            tiles={this.state.leds}
+            scale={this.props.scale}
+          />
+
+          <AnimatedSprite
+            sprite={foodMachineSprite}
+            spriteUID={this.characterUIDs.machine}
+            animationFrameIndex={[0]}
+            loopAnimation={false}
+            coordinates={this.machineLocation()}
+            size={this.machineSize()}
+          />
+          <AnimatedSprite
+            sprite={arrowSprite}
+            spriteUID={"happy_arrow:)"}
+            animationFrameIndex={[this.state.arrowIndex]}
+            loopAnimation={false}
+            coordinates={this.directionArrowLocation()}
+            size={{width: 110 * this.scale.image, height: 110 *  this.scale.image}}
+          />
+
+          <Matrix
+            styles={{
+                ...(this.tileBoardLocation()),
+                position: 'absolute',
+                width: 400 * this.props.scale.image,
+                height: 400 * this.props.scale.image,
+              }}
+            tileScale={1}
+            tiles={this.state.tiles}
+            scale={this.props.scale}
+            onPress={(tile, index) => this.gameBoardTilePress(tile, index)}
+          />
+
+          {this.state.blackout ?
+            <View style={styles.blackout} />
+          : null}
+
+          <AnimatedSprite
+            ref={'lightbulbRef'}
+            sprite={lightbulbCharacter}
+            spriteUID={'lightbulbRef'}
+            coordinates={gameUtil.getCoordinates('lightbulb', this.props.scale.screenHeight,
+                          this.props.scale.screenWidth, this.props.scale.image)}
+            size={gameUtil.getSize('lightbulb', this.props.scale.image)}
+            tweenOptions={this.state.lightbulbTweenOptions}
+            tweenStart={'fromMethod'}
+            animationFrameIndex={[this.state.lightbulbImgIndex]}
+          />
+
+          <AnimatedSprite
+            sprite={leverSprite}
+            spriteUID={this.characterUIDs.lever}
+            animationFrameIndex={this.state.leverAnimationIndex}
+            loopAnimation={false}
+            coordinates={this.leverLocation()}
+            size={this.leverSize()}
+            rotate={[{rotateY:'0deg'}]}
+            onPressIn={() => this.leverPressIn()}
+            onPressOut={() => this.leverPressOut()}
+          />
+
+          {this.state.devMode ?
+            <HomeButton
+              route={this.props.route}
+              navigator={this.props.navigator}
+              routeId={{ id: 'Main' }}
               styles={{
-                  ...(this.ledLocation()),
-                  position: 'absolute',
-                  width: 400 * this.props.scale.screenWidth,
-                  height: 130 * this.props.scale.screenHeight,
-                }}
-              tileScale={1}
-              tiles={this.state.leds}
-              scale={this.props.scale}
+                width: 150 * this.scale.image,
+                height: 150 * this.scale.image,
+                top:0, left: 0, position: 'absolute' }}
             />
+          : null}
 
-            <AnimatedSprite
-              sprite={foodMachineSprite}
-              spriteUID={this.characterUIDs.machine}
-              animationFrameIndex={[0]}
-              loopAnimation={false}
-              coordinates={this.machineLocation()}
-              size={this.machineSize()}
+          {this.state.loadingScreen ?
+            <LoadScreen
+              onTweenFinish={() => this.onLoadScreenFinish()}
+              width={SCREEN_WIDTH}
+              height={SCREEN_HEIGHT}
             />
-            <AnimatedSprite
-              sprite={arrowSprite}
-              spriteUID={"happy_arrow:)"}
-              animationFrameIndex={[this.state.arrowIndex]}
-              loopAnimation={false}
-              coordinates={this.directionArrowLocation()}
-              size={{width: 110 * this.scale.image, height: 110 *  this.scale.image}}
-            />
+          : null}
 
-            <Matrix
-              styles={{
-                  ...(this.tileBoardLocation()),
-                  position: 'absolute',
-                  width: 400 * this.props.scale.image,
-                  height: 400 * this.props.scale.image,
-                }}
-              tileScale={1}
-              tiles={this.state.tiles}
-              scale={this.props.scale}
-              onPress={(tile, index) => this.gameBoardTilePress(tile, index)}
-            />
-
-            {this.state.blackout ?
-              <View style={styles.blackout} />
-            : null}
-
-            <AnimatedSprite
-              ref={'lightbulbRef'}
-              sprite={lightbulbCharacter}
-              spriteUID={'lightbulbRef'}
-              coordinates={gameUtil.getCoordinates('lightbulb', this.props.scale.screenHeight,
-                            this.props.scale.screenWidth, this.props.scale.image)}
-              size={gameUtil.getSize('lightbulb', this.props.scale.image)}
-              tweenOptions={this.state.lightbulbTweenOptions}
-              tweenStart={'fromMethod'}
-              animationFrameIndex={[this.state.lightbulbImgIndex]}
-            />
-
-            <AnimatedSprite
-              sprite={leverSprite}
-              spriteUID={this.characterUIDs.lever}
-              animationFrameIndex={this.state.leverAnimationIndex}
-              loopAnimation={false}
-              coordinates={this.leverLocation()}
-              size={this.leverSize()}
-              rotate={[{rotateY:'0deg'}]}
-              onPressIn={() => this.leverPressIn()}
-              onPressOut={() => this.leverPressOut()}
-            />
-
-            {this.state.devMode ?
-              <HomeButton
-                route={this.props.route}
-                navigator={this.props.navigator}
-                routeId={{ id: 'Main' }}
-                styles={{
-                  width: 150 * this.scale.image,
-                  height: 150 * this.scale.image,
-                  top:0, left: 0, position: 'absolute' }}
-              />
-            : null}
-
-            {this.state.loadingScreen ?
-              <LoadScreen
-                onTweenFinish={() => this.onLoadScreenFinish()}
-                width={SCREEN_WIDTH}
-                height={SCREEN_HEIGHT}
-              />
-            : null}
-
-          </Image>
-          
-        </View>
+        </Image>
     );
   }
 }

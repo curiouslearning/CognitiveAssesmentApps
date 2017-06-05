@@ -156,7 +156,6 @@ class BugZapGameRedesign extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.signSound.setSpeed(1);
       this.signSound.setNumberOfLoops(0);
       this.signSound.setVolume(1);
     });
@@ -165,7 +164,6 @@ class BugZapGameRedesign extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.popSound.setSpeed(1);
       this.popSound.setNumberOfLoops(0);
       this.popSound.setVolume(1);
     });
@@ -174,7 +172,6 @@ class BugZapGameRedesign extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.leverSound.setSpeed(1);
       this.leverSound.setNumberOfLoops(0);
       this.leverSound.setVolume(1);
     });
@@ -183,7 +180,6 @@ class BugZapGameRedesign extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.celebrateSound.setSpeed(1);
       this.celebrateSound.setNumberOfLoops(0);
       this.celebrateSound.setVolume(1);
     });
@@ -192,7 +188,6 @@ class BugZapGameRedesign extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.disgustSound.setSpeed(1);
       this.disgustSound.setNumberOfLoops(0);
       this.disgustSound.setVolume(0.9);
     });

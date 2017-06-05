@@ -125,7 +125,6 @@ class BubblesGame extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.popSound.setSpeed(1);
       this.popSound.setNumberOfLoops(0);
       this.popSound.setVolume(1);
     });
@@ -134,7 +133,6 @@ class BubblesGame extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.leverSound.setSpeed(1);
       this.leverSound.setNumberOfLoops(0);
       this.leverSound.setVolume(1);
     });
@@ -143,7 +141,6 @@ class BubblesGame extends React.Component {
         console.warn('failed to load the sound', error);
         return;
       }
-      this.celebrateSound.setSpeed(1);
       this.celebrateSound.setNumberOfLoops(0);
       this.celebrateSound.setVolume(1);
     });
